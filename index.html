@@ -1258,7 +1258,7 @@
             }
         }
 
-        /* Find this block and replace it */
+        
 
 @media (max-width: 768px) {
     .nav { padding: 1.25rem 1.5rem; }
@@ -1403,7 +1403,7 @@
             </div>
         </div>
        
-        </div>
+        
     </section>
 
     <!-- EDITORIAL INTRO -->
@@ -1843,24 +1843,7 @@
 
 
 
-<script>
-// Intersection Observer for scroll-triggered reveals
-document.addEventListener('DOMContentLoaded', function() {
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    revealElements.forEach(el => revealObserver.observe(el));
-});
+
 </script>
     <!-- CTA SECTION -->
     <section class="cta-section" id="inquiry">
