@@ -1258,75 +1258,91 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .nav { padding: 1.25rem 1.5rem; }
-            .nav.scrolled { padding: 1rem 1.5rem; }
+        /* Find this block and replace it */
 
-            .nav-links { display: none; }
+@media (max-width: 768px) {
+    .nav { padding: 1.25rem 1.5rem; }
+    .nav.scrolled { padding: 1rem 1.5rem; }
 
-            .mobile-menu-toggle { display: block; }
+    .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+    }
 
-            .hero-content {
-                padding: 0 1.5rem 3rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2rem;
-            }
+    .nav-links a {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+    }
 
-            .hero-meta { text-align: left; }
+    .nav-cta-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.65rem;
+    }
 
-            .intro {
-                grid-template-columns: 1fr;
-                padding: 5rem 1.5rem;
-                gap: 3rem;
-            }
+    .mobile-menu-toggle { display: none; }
 
-            .specs { padding: 5rem 1.5rem; }
+    /* rest of your mobile styles stay the same */
+    .hero-content {
+        padding: 0 1.5rem 3rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
 
-            .specs-grid {
-                grid-template-columns: 1fr;
-            }
+    .hero-meta { text-align: left; }
 
-            .spec-card {
-                border-right: none !important;
-            }
+    .intro {
+        grid-template-columns: 1fr;
+        padding: 5rem 1.5rem;
+        gap: 3rem;
+    }
 
-            .spec-card:last-child {
-                border-bottom: none;
-            }
+    .specs { padding: 5rem 1.5rem; }
 
-            .gallery { padding: 5rem 1.5rem; }
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 220px;
-            }
+    .spec-card {
+        border-right: none !important;
+    }
 
-            .gallery-item:nth-child(1) {
-                grid-column: auto;
-                grid-row: auto;
-            }
+    .spec-card:last-child {
+        border-bottom: none;
+    }
 
-            .floorplans { padding: 5rem 1.5rem; }
+    .gallery { padding: 5rem 1.5rem; }
 
-            .floorplan-render { padding: 1.5rem; min-height: 300px; }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
 
-            .amenities { padding: 5rem 1.5rem; }
+    .gallery-item:nth-child(1) {
+        grid-column: auto;
+        grid-row: auto;
+    }
 
-            .amenities-grid {
-                grid-template-columns: 1fr;
-            }
+    .floorplans { padding: 5rem 1.5rem; }
 
-            .cta-section { padding: 6rem 1.5rem; }
+    .floorplan-render { padding: 1.5rem; min-height: 300px; }
 
-            .cta-buttons { flex-direction: column; width: 100%; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .amenities { padding: 5rem 1.5rem; }
 
-            .footer { padding: 3rem 1.5rem; }
-            .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .hero-scroll { display: none; }
-        }
+    .cta-section { padding: 6rem 1.5rem; }
+
+    .cta-buttons { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+    .footer { padding: 3rem 1.5rem; }
+    .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+
+    .hero-scroll { display: none; }
+}
     </style>
 </head>
 <body>
@@ -1986,83 +2002,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 hero.style.transform = `scale(1.05) translateY(${scrolled * 0.15}px)`;
             }
         });
-// Mobile menu toggle
-const mobileToggle = document.getElementById('mobileToggle');
-const navLinks = document.querySelector('.nav-links');
-let menuOpen = false;
 
-mobileToggle.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-
-    if (menuOpen) {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'fixed';
-        navLinks.style.top = '0';
-        navLinks.style.left = '0';
-        navLinks.style.right = '0';
-        navLinks.style.bottom = '0';
-        navLinks.style.background = 'rgba(250,249,247,0.98)';
-        navLinks.style.justifyContent = 'center';
-        navLinks.style.alignItems = 'center';
-        navLinks.style.zIndex = '999';
-        navLinks.style.gap = '2rem';
-
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.style.color = '#1A1A1A';
-            a.style.fontSize = '1.2rem';
-        });
-
-        // Change hamburger to X
-        mobileToggle.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        mobileToggle.children[1].style.opacity = '0';
-        mobileToggle.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-        mobileToggle.children[0].style.background = '#1A1A1A';
-        mobileToggle.children[1].style.background = '#1A1A1A';
-        mobileToggle.children[2].style.background = '#1A1A1A';
-
-    } else {
-        closeMenu();
-    }
-});
-
-// Close menu when clicking any link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (menuOpen) {
-            menuOpen = false;
-            closeMenu();
-        }
-    });
-});
-
-function closeMenu() {
-    navLinks.style.display = '';
-    navLinks.style.flexDirection = '';
-    navLinks.style.position = '';
-    navLinks.style.top = '';
-    navLinks.style.left = '';
-    navLinks.style.right = '';
-    navLinks.style.bottom = '';
-    navLinks.style.background = '';
-    navLinks.style.justifyContent = '';
-    navLinks.style.alignItems = '';
-    navLinks.style.zIndex = '';
-    navLinks.style.gap = '';
-
-    document.querySelectorAll('.nav-links a').forEach(a => {
-        a.style.color = '';
-        a.style.fontSize = '';
-    });
-
-    // Reset hamburger icon
-    mobileToggle.children[0].style.transform = '';
-    mobileToggle.children[1].style.opacity = '';
-    mobileToggle.children[2].style.transform = '';
-    mobileToggle.children[0].style.background = '';
-    mobileToggle.children[1].style.background = '';
-    mobileToggle.children[2].style.background = '';
-}
     </script>
 </body>
 </html>
