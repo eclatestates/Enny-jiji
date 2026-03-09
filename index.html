@@ -1268,11 +1268,18 @@
 
   @media (max-width: 768px) {
     .hero {
-        min-height: 600px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+    min-height: 500px;
+}
+
+.hero-media {
+    background: #0A0A0A;
+}
+
+.hero-media img,
+.hero-media video {
+    object-fit: contain;
+    background: #0A0A0A;
+}
 
     .hero-media {
         position: relative;
